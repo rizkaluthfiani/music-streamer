@@ -16,7 +16,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.0
         env:
           APP_STG_PATH: ${{ vars.APP_STG_PATH }}
-          GIT_URL: ${{ vars.GIT_URL }}
+          GIT_URL: ${{ secrets.GIT_URL }}
           MINIO_STG_ENDPOINT: ${{ secrets.MINIO_STG_ENDPOINT }}
           MINIO_STG_ACCESS_KEY: ${{ secrets.MINIO_STG_ACCESS_KEY }}
           MINIO_STG_SECRET_KEY: ${{ secrets.MINIO_STG_SECRET_KEY }}
