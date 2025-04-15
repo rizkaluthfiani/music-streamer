@@ -35,7 +35,7 @@ jobs:
           script: |
             if [[ -d "home/ubuntu/${APP_PROD_PATH}" ]]; then
               cd $APP_PROD_PATH
-              sudo docker compose down pacmusic-prod
+              sudo docker compose down pacmusic
               git pull origin main
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts
@@ -51,7 +51,7 @@ jobs:
             echo "MINIO_PROD_SECRET_KEY=$MINIO_PROD_SECRET_KEY" >> .env
 
             # Run app
-            sudo docker compose up --build --detach pacmusic-prod
+            sudo docker compose up --build --detach pacmusic
 
       - name: Hit Endpoint
         run: |
