@@ -33,8 +33,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_PRODUCTION }}
           envs: APP_PROD_PATH, GIT_URL, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY, APP_PROD_PORT, DOCKERHUB_USERNAME, DOCKERHUB_TOKEN, APP_NAME, APP_TAG
           script: |
-
-            script: |
             if [[ -d "home/ubuntu/${APP_PROD_PATH}" ]]; then
               cd $APP_PROD_PATH
               sudo docker compose down pacmusic-prod
