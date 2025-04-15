@@ -43,7 +43,7 @@ jobs:
             echo "${DOCKERHUB_USERNAME}/${APP_NAME}:${APP_TAG}"
             if [[ -d "/home/ubuntu/${APP_PROD_PATH}" ]]; then
               cd $APP_PROD_PATH
-              sudo docker compose down pacmusic-prod || true
+              sudo docker compose down pacmusic-prod
               git pull origin main
             else
               ssh-keyscan github.com > ~/.ssh/known_hosts

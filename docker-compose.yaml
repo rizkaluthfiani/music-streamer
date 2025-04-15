@@ -34,7 +34,7 @@ services:
 
 # PROD
   pacmusic-prod:
-    image: rizkaluthfiani/pacmusic:v0.0.9
+    image: "${APP_IMAGE}:${APP_TAG}"
     container_name: pacmusic-prod
     environment:
       MINIO_ENDPOINT: ${MINIO_PROD_ENDPOINT}
