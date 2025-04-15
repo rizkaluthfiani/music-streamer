@@ -16,7 +16,7 @@ jobs:
       - name: Execute deployment command
         uses: appleboy/ssh-action@v1.0.3
         env:
-          APP_PATH_PROD: ${{ vars.APP_PROD_PATH }}
+          APP_PROD_PATH: ${{ vars.APP_PROD_PATH }}
           GIT_URL: ${{ secrets.GIT_URL }}
           MINIO_PROD_ENDPOINT: ${{ secrets.MINIO_PROD_ENDPOINT }}
           MINIO_PROD_ACCESS_KEY: ${{ secrets.MINIO_PROD_ACCESS_KEY }}
@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.SSH_HOST_PRODUCTION }}
           username: ${{ secrets.SSH_USER_NAME_PRODUCTION }}
           key: ${{ secrets.SSH_PRIVATE_KEY_PRODUCTION }}
-          envs: APP_PATH_PROD, GIT_URL, DOCKERHUB_USERNAME, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY, APP_PROD_PORT, DOCKERHUB_TOKEN, APP_NAME, APP_TAG
+          envs: APP_PROD_PATH, GIT_URL, DOCKERHUB_USERNAME, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY, APP_PROD_PORT, DOCKERHUB_TOKEN, APP_NAME, APP_TAG
           script: |
 
             script: |
