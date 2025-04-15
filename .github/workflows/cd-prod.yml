@@ -48,6 +48,8 @@ jobs:
               git clone $GIT_URL $APP_PROD_PATH
               cd $APP_PROD_PATH
             fi
+
+            echo $DOCKERHUB_TOKEN | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             
             echo "APP_IMAGE=${DOCKERHUB_USERNAME}/${APP_NAME}" > .env
             echo "APP_TAG=$APP_TAG" >> .env
