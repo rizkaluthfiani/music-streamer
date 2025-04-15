@@ -39,6 +39,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_PRODUCTION }}
           envs: APP_PROD_PATH, GIT_URL, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY, APP_PROD_PORT, DOCKERHUB_USERNAME, DOCKERHUB_TOKEN, APP_NAME, APP_TAG
           script: |
+            echo $DOCKERHUB_TOKEN | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
             if [[ -d "/home/ubuntu/${APP_PROD_PATH}" ]]; then
               cd $APP_PROD_PATH
               sudo docker compose down pacmusic-prod || true
@@ -48,12 +50,9 @@ jobs:
               git clone $GIT_URL $APP_PROD_PATH
               cd $APP_PROD_PATH
             fi
-
-            echo $DOCKERHUB_TOKEN | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             
             echo "APP_IMAGE=${DOCKERHUB_USERNAME}/${APP_NAME}" > .env
             echo "APP_TAG=$APP_TAG" >> .env
-            echo "${APP_IMAGE}:${APP_TAG}"
             echo "APP_PROD_PORT=$APP_PROD_PORT" >> .env
             echo "MINIO_PROD_ENDPOINT=$MINIO_PROD_ENDPOINT" >> .env
             echo "MINIO_PROD_ACCESS_KEY=$MINIO_PROD_ACCESS_KEY" >> .env
